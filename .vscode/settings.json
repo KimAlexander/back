@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "editor.autoIndent": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  }
+}
