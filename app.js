@@ -8,12 +8,14 @@ const router = new express.Router();
 
 const followersRout = require('./routs/followers');
 
-mongoose.connect('mongodb://localhost/insta', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/insta', {
+  useNewUrlParser: true
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log('-----OK-----')
+  console.log('-----OK-----');
 });
 
 app.use(morgan('dev'));
@@ -27,18 +29,6 @@ const noCache = function (req, res, next) {
   res.setHeader('Pragma', 'no-cache');
   return next();
 };
-// app.use((reg, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Header', '*');
-
-//   if (reg.method === 'OPTIONS') {
-//     reg.header('Access-Control-Allow-Methods', '*');
-//     return reg.status(200).json({});
-//   }
-// });
-
-// app.use('/followers', followersRout);
-
 
 app.use('/api', cors({
   exposedHeaders: 'Content-Range,Content-Length',
