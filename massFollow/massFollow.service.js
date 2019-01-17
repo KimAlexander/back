@@ -3,8 +3,14 @@ const User = require('../user/user.model');
 class MassFollowService {
   constructor() {}
 
-  createWork(data) {
-    return new Follower(data).save();
+  async createWork(data) {
+    const activeUsers = await User.find().exec();
+    console.log(activeUsers)
+
+
+
+
+    // return new Follower(data).save();
   }
 
   get() {

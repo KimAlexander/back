@@ -10,19 +10,19 @@ module.exports = {
 
   createWork(req, res, next) {
     new FollowerService()
-      .create(req.body)
+      .createWork(req.body)
       .then(user => res.status(200).json(user).end())
       .catch(error => next(error));
   },
 
-  getById(req, res, next) {
+  getProcessById(req, res, next) {
     new FollowerService()
       .getById(req.params.followerId)
       .then(user => res.status(200).json(user).end())
       .catch(error => next(error));
   },
 
-  updateById(req, res, next) {
+  updateProcessById(req, res, next) {
     new FollowerService()
       .updateById(req.params.followerId, req.body)
       .then(user => res.status(200).json(user).end())
