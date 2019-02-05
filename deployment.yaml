@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mainbackdeployment
+  labels:
+    app: mainbacklabel
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mainbacklabel
+  template:
+    metadata:
+      labels:
+        app: mainbacklabel
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:latest
+        command: ["mongod"]
+        ctrl:
+        ports:
+        - containerPort: 27017
+      - name: mainbackapp
+        imagePullPolicy: Never
+        image: mainback:latest
+        command: ["npm", "run", "server"]
+        ctrl:
+        ports:
+        - containerPort: 3000
