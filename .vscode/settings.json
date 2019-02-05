@@ -3,5 +3,6 @@
   "editor.autoIndent": true,
   "[javascript]": {
     "editor.formatOnSave": true
-  }
+  },
+  "files.insertFinalNewline": true
 }

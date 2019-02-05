@@ -11,8 +11,6 @@ const followersRout = require('./routs/followers');
 
 const networkInterfaces = os.networkInterfaces();
 
-setTimeout(init, 10000)
-
 function init() {
   console.log('run')
   mongoose.connect(`mongodb://${networkInterfaces.lo[0].address}/insta`, {
@@ -43,6 +41,6 @@ function init() {
   }), noCache, require('./api'));
 }
 
-
+setTimeout(init, 10000)
 
 module.exports = app;
