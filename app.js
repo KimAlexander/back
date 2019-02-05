@@ -10,10 +10,8 @@ const router = new express.Router();
 const followersRout = require('./routs/followers');
 
 const networkInterfaces = os.networkInterfaces();
-console.log(networkInterfaces.lo[0].address, '---------------');
 
 setTimeout(init, 10000)
-
 
 function init() {
   console.log('run')
