@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mainbackenddeployment
+spec: 
+  selector:
+    matchLabels:
+      app: mainbackend
+  replicas: 2
+  template:
+    spec: 
+      containers:
+        - name: mongoservice
+          image: mongo:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 27018
+        - name: mainbackendapi
+          imagePullPolicy: Never
+          image: backtestv1:latest
+          command: ["npm", "run", "prod"]
+          ports:
+            - containerPort: 4000
+    metadata:
+      labels:
+        app: mainbackend

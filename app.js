@@ -8,32 +8,34 @@ const router = new express.Router();
 
 const followersRout = require('./routs/followers');
 
-mongoose.connect('mongodb://localhost/insta', {
+mongoose.connect('mongodb://mongoservice/insta', {
   useNewUrlParser: true
 });
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('-----OK-----');
-});
+console.log("-----OOOOOKKKKKK")
 
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
-app.use(bodyParser.json());
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', () => {
+//   console.log('-----OK-----');
+// });
 
-const noCache = function (req, res, next) {
-  res.setHeader('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-  res.setHeader('Pragma', 'no-cache');
-  return next();
-};
+// app.use(morgan('dev'));
+// app.use(bodyParser.urlencoded({
+//   extended: false
+// }));
+// app.use(bodyParser.json());
 
-app.use('/api', cors({
-  exposedHeaders: 'Content-Range,Content-Length',
-  maxAge: 600
-}), noCache, require('./api'));
+// const noCache = function (req, res, next) {
+//   res.setHeader('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+//   res.setHeader('Pragma', 'no-cache');
+//   return next();
+// };
+
+// app.use('/api', cors({
+//   exposedHeaders: 'Content-Range,Content-Length',
+//   maxAge: 600
+// }), noCache, require('./api'));
 
 
 module.exports = app;

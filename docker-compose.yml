@@ -1,0 +1,14 @@
+
+version: '3'
+services:
+  mongo_service:
+    image: mongo:latest
+    ports: 
+      - 27018:27018
+  main_rest_api_backend:
+    image: 'main_rest_api_backend'
+    build: .
+    ports: 
+      - 4000:3000
+    depends_on: 
+      - mongo_service
